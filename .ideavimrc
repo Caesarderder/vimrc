@@ -1,0 +1,99 @@
+"                                                      NORMAL"
+"leader key map"
+let mapleader = " "
+
+"提前滚动"
+set scrolloff=3
+
+"normal模式下切换成英文"
+:set keep-english-in-normal-and-restore-in-insert
+
+"搜索时忽略大小写"
+set ignorecase
+"输入搜索模式时，每输入一个字符，就自动跳到第一个匹配的结果"
+set incsearch
+"如果同时打开了ignorecase，那么对于只有一个大写字母的搜索词，将大小写敏感；其他情况都是大小写不敏感。比如，搜索Test时，将不匹配test；搜索test时，将匹配Test"
+set smartcase
+
+set hlsearch
+set splitright
+set sneak
+set surround
+
+
+"cursor move"
+nnoremap H ^
+nnoremap <leader>h H
+nnoremap L $
+nnoremap <Leader>l L
+
+nnoremap <Leader>k K
+nnoremap <Leader>j J
+nnoremap <Leader>n :tabn<CR>
+nnoremap <Leader>p :tabp<CR>
+nnoremap <leader>s :vsplit<CR>
+nnoremap <Leader>j J
+
+"                                                    IdeamVim"
+
+"               Universal Action"
+
+nnoremap K :action Back<CR>
+nnoremap J :action Forward<CR>
+
+nnoremap <Leader>/ :action CommentByLineComment<CR>
+nnoremap <Leader>? :action CommentByBlockComment<CR>
+vnoremap <Leader>/ :action CommentByLineComment<CR>
+vnoremap <Leader>? :action CommentByBlockComment<CR>
+
+nnoremap <Leader>r :action RenameElement<CR>
+vnoremap <Leader>r :action RenameElement<CR>
+
+nnoremap <Leader>f :action FindUsages<CR>
+vnoremap <Leader>f :action FindUsages<CR>
+
+nnoremap <Leader>F :action FindSelectionInPath<CR>
+vnoremap <Leader>F :action FindSelectionInPath<CR>
+
+" go to somewhere (g in normal mode for goto somewhere)
+nnoremap gi :<C-u>action GotoImplementation<CR>
+nnoremap gd :<C-u>action GotoDeclaration<CR>
+
+nnoremap ga :<C-u>action GotoAction<CR>
+nnoremap gc :<C-u>action GotoClass<CR>
+
+nnoremap <Leader>en:action GotoNextError<CR>
+nnoremap <Leader>ep:action GotoPreviousError<CR>
+"nnoremap gf :<C-u>action GotoFile<CR>
+
+
+"               Special Action"
+
+"nnoremap gs :<C-u>action GotoSuperMethod<CR>
+"nnoremap gm :<C-u>action GotoSymbol<CR>
+"nnoremap gu :<C-u>action ShowUsages<CR>
+"nnoremap gt :<C-u>action GotoTest<CR>
+"nnoremap gp :<C-u>action FindInPath<CR>
+"nnoremap gr :<C-u>action RecentFiles<CR>
+
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins 
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+" Commentary plugin
+Plug 'tpope/vim-commentary'
+
+
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
+
+"" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
+
+"" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)
+
+"highlight when move jump
+set quickscope
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
